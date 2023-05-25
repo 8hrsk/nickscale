@@ -80,6 +80,20 @@ function load(arr) { // Функция "заряжания" массива
     }
 }
 
+function check (array, string, loop) {
+    if (!contains(array, string[loop])) {
+        try {
+            eval(string[loop])
+        } catch(err) {
+            if (err != null) {
+                return false
+            } else {
+                return true
+            }
+        }
+    }
+}
+
 load(num); // Заряжаем массивв проверки на число
 
 //console.log(eval(num));
@@ -100,7 +114,7 @@ function generateword(input) {
     let afterEff = "";
 
     for (let loop = 0; loop < leak.length; loop ++) { // легкая логика для генератора
-        if (contains(num, leak[loop]) || contains(num, leak[loop])) {
+        if (contains(num, leak[loop]) || check(num, leak, loop) == false) {
             console.log(leak[loop]);
             afterEff += leak[loop];
         } else {
@@ -131,7 +145,7 @@ events.btn.addEventListener('click', () => {
 
 })
 
-document.addEventListener('keypress', (event) => {
+document.addEventListener('keypress', (event) => { // позволяет вызывать функцию по нажатию enter
     let keyCode = event.keyCode ? event.keyCode : event.which;
     if (keyCode == 13) {
         events.btn.click()
