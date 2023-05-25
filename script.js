@@ -1,11 +1,16 @@
 function divider(inputInfo) { // получаем инфу
     inputInfo = inputInfo.toLowerCase(); // приводим всё к нижнему регистру для удобства
     let split = inputInfo.length;
-    // console.log(split);
+    console.log(split);
     let result = Array();
 
     for (let i = 0; i < split; i++) {
-        result.push(inputInfo[i])
+        if (inputInfo[i].length >=2) {
+            inputInfo[i] = ' '
+            console.log('asd');
+        } else {
+            result.push(inputInfo[i])   
+        }
     }
     return result // получаем массивиз строки опять же для удобства работы
 }
@@ -69,14 +74,25 @@ let ы = Array(`Ӹ`, `Ы`);
 let ь = Array(`b`, `Ь`, `|o`);
 let э = Array(`∋`, `∌`, `∍`, `ヨ`, `Ӭ`, `ӭ`, `℈`);
 let ю = Array(`ਠ`, `|-0`, `Ю`);
-let я = Array(`R`, `Я`, `/|`, `⋌`, );
+let я = Array(`R`, `Я`, `/|`, `⋌`);
 
-
-let num = Array(`.`, `,`, `:`, `;`, `/`, `\\`, `!`, `@`, `"`, `'`, `#`, `$`, `%`, `^`, `&`, `?`, `*`, `(`, `)`, `-`, `_`, `+`, `=`, `|`, `[`, `[`, `{`, `}`, `\``, `~`, `№`, `<`, `>`, ` `)
+let num = Array(`.`, `,`, `:`, `;`, `/`, `\\`, `!`, `@`, `"`, `'`, `#`, `$`, `%`, ` `, `^`, `&`, `?`, `*`, `(`, `)`, `-`, `_`, `+`, `=`, `|`, `[`, `[`, `{`, `}`, `\``, `~`, `№`, `<`, `>`, ` `)
 
 function load(arr) { // Функция "заряжания" массива
     for (let i = 0; i < 10; i ++) {
         arr.push(String(i));
+    }
+}
+
+load(num); // Заряжаем массивв проверки на число
+
+// console.log(eval(num));
+
+function randomElem(array) {
+    if ( array != undefined) {
+        result = array[Math.floor(Math.random() * (array.length - 1))]
+        //console.log(result);
+        return result   
     }
 }
 
@@ -94,16 +110,6 @@ function check (array, string, loop) {
     }
 }
 
-load(num); // Заряжаем массивв проверки на число
-
-//console.log(eval(num));
-
-function randomElem(array) {
-    result = array[Math.floor(Math.random() * (array.length - 1))]
-    //console.log(result);
-    return result
-}
-
 function contains(arr, elem) { // проверка на нахождение даного элемента в массиве
     return arr.indexOf(elem) != -1;
 }
@@ -115,13 +121,21 @@ function generateword(input) {
 
     for (let loop = 0; loop < leak.length; loop ++) { // легкая логика для генератора
         if (contains(num, leak[loop]) || check(num, leak, loop) == false) {
-            console.log(leak[loop]);
+            //console.log(leak[loop], 'worj1');]
             afterEff += leak[loop];
+            //console.log(loop);
         } else {
-            afterEff += randomElem(eval(leak[loop]))
+            if (randomElem(eval(leak[loop])) == undefined) {
+                afterEff += ''
+            } else {
+                afterEff += randomElem(eval(leak[loop]))                
+            }
+
+            console.log(leak[loop], 'work2');
+            console.log(loop);
         }
     }
-
+    console.log(afterEff, afterEff.length,);
     return afterEff
 }
 
@@ -145,7 +159,7 @@ events.btn.addEventListener('click', () => {
 
 })
 
-document.addEventListener('keypress', (event) => { // позволяет вызывать функцию по нажатию enter
+document.addEventListener('keypress', (event) => {
     let keyCode = event.keyCode ? event.keyCode : event.which;
     if (keyCode == 13) {
         events.btn.click()
