@@ -18,11 +18,12 @@ a.demo {
   .demo-flex-spacer {
     flex-grow: 1;
   }
-
 body{
     font-family: 'Exo', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background: #4e54c8;  
+    background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);  
 }
 
 html { box-sizing: border-box; font-size: 10px; }
