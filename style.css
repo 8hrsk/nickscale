@@ -64,10 +64,11 @@ html { box-sizing: border-box; font-size: 10px; }
 .area{
     background: #4e54c8;  
     background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);  
-    width: 100dvi;
-    height:100dvh;
+    /* width: 100dvi;
+    height: 100dvh; */
     background-size: cover;
-   
+    background-attachment: fixed;
+    background-position: center center;
 }
 
 .ta {
