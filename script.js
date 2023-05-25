@@ -82,7 +82,7 @@ function load(arr) { // Функция "заряжания" массива
 
 load(num); // Заряжаем массивв проверки на число
 
-console.log(eval(num));
+//console.log(eval(num));
 
 function randomElem(array) {
     result = array[Math.floor(Math.random() * (array.length - 1))]
@@ -129,4 +129,11 @@ events.btn.addEventListener('click', () => {
         events.text.innerHTML = val;        
     }
 
+})
+
+document.addEventListener('keypress', (event) => {
+    let keyCode = event.keyCode ? event.keyCode : event.which;
+    if (keyCode == 13) {
+        events.btn.click()
+    }
 })
