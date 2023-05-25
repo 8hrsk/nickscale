@@ -1,13 +1,13 @@
 function divider(inputInfo) { // получаем инфу
     inputInfo = inputInfo.toLowerCase(); // приводим всё к нижнему регистру для удобства
     let split = inputInfo.length;
-    console.log(split);
+    //console.log(split);
     let result = Array();
 
     for (let i = 0; i < split; i++) {
         if (inputInfo[i].length >=2) {
             inputInfo[i] = ' '
-            console.log('asd');
+            //console.log('asd');
         } else {
             result.push(inputInfo[i])   
         }
@@ -131,8 +131,8 @@ function generateword(input) {
                 afterEff += randomElem(eval(leak[loop]))                
             }
 
-            console.log(leak[loop], 'work2');
-            console.log(loop);
+            //console.log(leak[loop], 'work2');
+            //console.log(loop);
         }
     }
     console.log(afterEff, afterEff.length,);
