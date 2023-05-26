@@ -126,7 +126,7 @@ function generateword(input) {
             //console.log(loop);
         } else {
             if (randomElem(eval(leak[loop])) == undefined) {
-                afterEff += ''
+                afterEff += '';
             } else {
                 afterEff += randomElem(eval(leak[loop]))                
             }
@@ -145,6 +145,17 @@ let events = {
     text: document.getElementById('text')
 }
 
+let hack = 0;
+
+function checkForL(input) {
+    let vallen = input.length;
+    if (vallen > 20) {
+        return false;
+    } else {
+        return true;
+    }
+}
+
 // console.log(events.btn.innerHTML);
 
 events.btn.addEventListener('click', () => {
@@ -152,16 +163,24 @@ events.btn.addEventListener('click', () => {
     let val = events.form.value;
     if (val == '') {
         events.text.innerHTML = 'Вы ничего не ввели!';
+    } else if(checkForL(val) == false && hack == 0) {
+        events.text.innerHTML = 'Кол-во символов должно быть меньше 20!';
     } else {
         val = generateword(val);
-        events.text.innerHTML = val;        
+        events.text.innerHTML = val;
     }
-
 })
 
 document.addEventListener('keypress', (event) => {
     let keyCode = event.keyCode ? event.keyCode : event.which;
     if (keyCode == 13) {
         events.btn.click()
+    }
+})
+
+document.addEventListener('keypress', (event) => {
+    let keyCode = event.keyCode ? event.keyCode : event.which;
+    if (keyCode == 9) {
+        hack = 1;
     }
 })
