@@ -163,7 +163,7 @@ events.btn.addEventListener('click', () => {
     let val = events.form.value;
     if (val == '') {
         events.text.innerHTML = 'Вы ничего не ввели!';
-    } else if(checkForL(val) == false && hack == 0) {
+    } else if(checkForL(val) == false && hack === 0) {
         events.text.innerHTML = 'Кол-во символов должно быть меньше 20!';
     } else {
         val = generateword(val);
